@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-center mb-5">Builder Form</h2>
+      <form class="row g-3" (ngSubmit)="onSubmit()" [formGroup]="form">
+      
+        <div class="col-md-6">
+            <label class="form-label">Choose Input</label>
+            <select formControlName="input" class="form-select">
+              <option  *ngFor="let opt of options " [value]="opt">{{opt}}</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+          <label for="inputState" class="form-label">Label</label>
+          <input  formControlName ="label" type="text" required class="form-control" id="inputZip">
+        </div>
+        <div class="col-md-12">
+          <label for="inputZip" class="form-label">Value</label>
+          <input formControlName ="value" type="text" class="form-control" id="inputZip">
+        </div>
+  
+        <div class="col-md-2">
+          <button type="submit"[disabled]="form.invalid" class="btn btn-primary">Add</button>
+        </div>      
+        <div class="col-md-4">
+          <button 
+            (click)="convertToJson()"
+            type="button"
+            [disabled]="form.invalid" 
+            class="btn btn-warning"
+          >
+            Convert to JSON
+          </button>
+        </div> 
+        
+        <div *ngIf="payload" class="col-md-12 form-group">
+          <strong>Here's the payload</strong><br>
+          {{payload | json }}
+        </div>
+        
+      </form>
+    </div>
+  
+    <div class="col-md-6">
+      <h2 class="text-center mb-5">Preview</h2>
+      <app-form [preview]="false" *ngIf="formFields" [formFields]="formFields | async"></app-form>
+    </div>
+  </div>
+</div>
