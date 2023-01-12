@@ -4,6 +4,8 @@ import { FormField } from 'src/app/shared/model/form-field';
 import { BuilderFormService } from 'src/app/shared/services/builder-form.service';
 import { Observable } from 'rxjs';
 import { FormfieldControlService } from '../../shared/services/formfield-control.service';
+import { ApiService } from 'src/app/shared/services/api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -23,6 +25,7 @@ export class HomeComponent implements OnInit {
   
   constructor(private formBuilder: FormBuilder,
     private service: FormfieldControlService,
+    private apiService: ApiService,
     private builderForm: BuilderFormService) { 
     this.options = ['text', 
       'password','checkbox', 
@@ -49,6 +52,11 @@ export class HomeComponent implements OnInit {
     if(!this.inputs.includes(value)) {
       this.inputs.push(value)
       this.formFields = this.builderForm.getFormFields(this.inputs);
+      this.apiService.createField(value)
+        .subscribe({
+          next: (res) => console.log(res),
+          error: (err: HttpErrorResponse) => console.log(err.error)
+        })
     }
     
   }

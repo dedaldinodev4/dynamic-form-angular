@@ -1,0 +1,57 @@
+{
+  "inputs": [
+    {
+      "key": "name",
+      "label": "Name",
+      "required": true,
+      "validator": "",
+      "order": 1,
+      "controlType": "textbox",
+      "type": "text",
+      "options": [],
+      "id": 1
+    },
+    {
+      "key": "last name",
+      "label": "Last Name",
+      "required": true,
+      "validator": "",
+      "order": 1,
+      "controlType": "textbox",
+      "type": "text",
+      "options": [],
+      "id": 2
+    },
+    {
+      "key": "gender",
+      "label": "Gender",
+      "required": false,
+      "validator": "",
+      "order": 1,
+      "controlType": "radio",
+      "type": "",
+      "options": [
+        {
+          "key": "male",
+          "value": "Male"
+        },
+        {
+          "key": " female",
+          "value": " Female"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "key": "age",
+      "label": "Age",
+      "required": true,
+      "validator": "",
+      "order": 1,
+      "controlType": "textbox",
+      "type": "number",
+      "options": [],
+      "id": 4
+    }
+  ]
+}
